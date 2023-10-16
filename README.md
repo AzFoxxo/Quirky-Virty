@@ -55,3 +55,4 @@ The according order below, shows the binary form of each instruction so `LDA` wo
 - `XOR` (Bitwise XOR): Performs a bitwise XOR operation between the values in registers A and B and stores the result in the A register.
 - `HLT` - Halt execution of the machine (kill the interpreter/shutdown)
 - `BNK` `&memory_address` - Switch memory banks (where A and B read/write to (does not effect P register or C register))
+- `LDACON` `value`- Load a constant into A register (this cannot be invoked, it is a sub-instruction called by `SET` when setting memory to a constant)
