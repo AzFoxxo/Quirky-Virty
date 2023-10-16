@@ -47,7 +47,7 @@ The according order below, shows the binary form of each instruction so `LDA` wo
 - `JNZ` `&memory_address` - Move the program pointer to a new memory address if C register is not zero
 - `JZ` `&memory_address` - Move the program pointer to a new memory address if C register is zero
 - `NOP` - Skip cycle and perform no instruction
-- `SET` `&memory_address` - Set an address in memory to the value of the A reister
+- `SET` `flag` `&memory_address` `constant` - Set an address in memory to the value of the A reister if no flag set, else read the 1 byte after as data
 - `CMP` `flag` - Compares the values in register A and B and stores the result in the C register (if flag is 0 - no flip, if not zero, flip output stored in the C register)
 - `CPL` `flag` - Compares if value in A register is less than B register and stores result in C (if flag is 0 - no flip, if not zero, flip output stored in the C register)
 - `AND` (Bitwise AND): Performs a bitwise AND operation between the values in registers A and B and stores the result in the A register.
