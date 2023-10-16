@@ -1,3 +1,4 @@
 # Exclude bin and obj dirs
 bin/
 obj/
+ROM.bin

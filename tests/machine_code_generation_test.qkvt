@@ -1,0 +1,56 @@
+; This is the test ROM assembly language
+; This is not meant to produce a valid output but test machine code generation
+; This will most likely result in unpredictable execution if run
+
+; 248: Bank A (lower bytes) - F8
+; 249: Bank B - F9
+; 250: Bank C - FA
+; 251: Bank D - FB
+
+; Data segment - no constants so memory is set at runtime in active memory bank
+:data
+SET $00 32 ; Create an unsigned int
+SET $01 64 ; Create an unsigned int
+JMP main
+
+; Initialisation process (init label is required by ROM)
+:init
+BNK $F9 ; Set the default addressable space to the general purpose register B
+JMP data
+
+:main
+LDA $00 ; Load data at 00 to register A
+LDB $01 ; Load data at 01 to register B
+ADD ; Add A and B registers and store result in C
+STA $01 ; Store value of A to 01 changing data
+STB $00 ; Store value of B to 00 changing data
+STC $02 ; Store the value
+SUB ; Subtracts B register from A
+
+; Random instructions
+SET $05
+NOP ; Do nothing
+
+ CMP  ;  No flip compare
+CMP  1 ; Flip compare result
+
+ JNZ lab_one
+ JZ    lab_two
+
+:lab_one
+JMP lab_three
+
+:lab_two
+JMP lab_three
+
+ :lab_three
+CPL ; A less than B
+CPL 1 ; A more than B
+
+; Logical
+AND
+OR
+XOR
+
+; Program kill
+HLT
