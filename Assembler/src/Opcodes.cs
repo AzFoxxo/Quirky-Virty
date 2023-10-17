@@ -34,7 +34,6 @@ namespace Assembler
         JNZ,
         JZ,
         NOP,
-        SET,
         CMP,
         CPL,
         AND,

@@ -156,7 +156,8 @@ namespace Assembler
             List<Instruction> instructions = new List<Instruction>();
 
             // Get enum name of Opcodes using reflection
-            string[] enumNames = Enum.GetNames(typeof(Opcodes));
+            // SET is not a machine instruction so contains no definition in Opcodes so must be manually added
+            string[] enumNames = Enum.GetNames(typeof(Opcodes)).Concat(new[] { "SET" }).ToArray();
 
             // Loop through each line
             foreach (var line in lines)
@@ -276,23 +277,23 @@ namespace Assembler
             // Set instruction
             if (tokens[0].ToUpper() == "SET")
             {
-                // Set is a complex instruction, a normal set with an address it writes the value of the A register to,
-                // is a singular SET instruction but SET which takes a constant, requires 2 bytes so needs to execute
-                // Two instructions, one to load a constant into the A register (LDACON) and another which calls the SET instruction
+                // Set is a complex instruction, a normal set (which is transformed to STA) with an address it writes the value of
+                // the A register to, is a singular SET instruction but SET which takes a constant, requires 2 bytes so needs to execute
+                // Two instructions, one to load a constant into the A register (LDACON) and another which calls the STA instruction
 
-                // If two two tokens, add standard SET instruction
-                if (tokens.Length == 2) return new Instruction(Opcodes.SET, false, true, tokens[1]);
+                // If two two tokens, add STA instruction
+                if (tokens.Length == 2) return new Instruction(Opcodes.STA, false, true, tokens[1]);
 
-                // If three tokens, add LDACON instruction
+                // If three tokens, add LDACON instruction and STA
                 if (tokens.Length == 3)
                 {
                     return new List<Instruction> {
                         new(Opcodes.LDACON, false, true, tokens[2]),
-                        new(Opcodes.SET, false, true, tokens[1])
+                        new(Opcodes.STA, false, true, tokens[1])
                     };
                 }
 
-                Opcodes op = Opcodes.SET;
+                Opcodes op = Opcodes.STA;
                 return new Instruction(op, tokens.Length == 2 ? (tokens[1] != "0" ? true : false) : false, false, "");
             }
 
