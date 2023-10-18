@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2023 Az Foxxo
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -148,14 +148,14 @@ namespace Assembler
                         // Remove $ - address from operand
                         var operand = instruction.lngReg.Replace("$", "");
 
-                        // Convert to hex to byte
+                        // Convert hex to byte
                         if (Byte.TryParse(operand, System.Globalization.NumberStyles.HexNumber, null, out byte value) && instruction.lngReg.Contains('$'))
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine($"`{instruction.lngReg}` to `{operand}` to `{Convert.ToByte(value)}`");
                             Console.ResetColor();
                         }
-                        // Convert to decimal to byte
+                        // Convert decimal to byte
                         else if (Byte.TryParse(operand, out value))
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
