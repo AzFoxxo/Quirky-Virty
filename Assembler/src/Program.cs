@@ -140,9 +140,31 @@ namespace Assembler
 
                     // Write byte
                     writer.Write(machineCode);
-                    
-                    // If lng reg is in use, write long reg
-                    if (instruction.lng) writer.Write(instruction.lngReg);
+
+                    // Long register
+                    if (instruction.lng)
+                    {
+                        // Remove $ - address from operand
+                        var operand = instruction.lngReg.Replace("$", "");
+
+                        // Convert to byte
+                        if (Byte.TryParse(operand, System.Globalization.NumberStyles.HexNumber, null, out byte value))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine($"`{instruction.lngReg}` to `{operand}` to `{Convert.ToByte(value)}`");
+                            Console.ResetColor();
+
+                            // Write the byte
+                            writer.Write(value);
+                        }
+                        else
+                        {
+                            // Log error
+                            Console.WriteLine($"Error: Invalid long register {instruction.lngReg}");
+                            Environment.Exit((int)ErrorCodes.InvalidLongRegister);
+                        
+                        }
+                    }
                 }
 
                 // Write the end of file

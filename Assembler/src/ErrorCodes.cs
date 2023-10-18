@@ -28,6 +28,7 @@ namespace Assembler
         InvalidFileExtension,
         UnknownLabelName,
         InvalidOpcode,
-        InvalidNumberOfArguments
+        InvalidNumberOfArguments,
+        InvalidLongRegister
     }
 }
