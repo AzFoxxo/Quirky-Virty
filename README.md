@@ -1,5 +1,5 @@
-# Quirky Virty (QKVT) 8 bit simplifed architecture
-Quirky Virty is a highly simplified 8 bit virutal machine with a reduced instruction set using a console interface which loads roms.
+# Quirky Virty (QKVT) 8 bit simplified architecture
+Quirky Virty is a highly simplified 8 bit virtual machine with a reduced instruction set using a console interface which loads roms.
 
 ## CPU
 The CPU operates at 2MHz (single threaded) and each instruction takes one whole byte, the first bit is the flag which can either be `0` or `1` - one being alternate behaviour, the second bit contains whether an additional eight bits is required for the instruction `1` or if the instruction requires no other space `0`. This leaves 6 bits for the instruction itself.
@@ -12,7 +12,7 @@ The memory is split into several parts, in total, there is 256 addressable locat
 - `BANK_B` - The B bank is free memory bank you can write and read to freely
 
 #### Bank A
-Bank A is reservsed for ROM, it cannot be written to directly or read for security reasons. The last byte is automatically set to `HLT` instruction even if ROM cannot fit with this change.
+Bank A is reserved for ROM, it cannot be written to directly or read for security reasons. The last byte is automatically set to `HLT` instruction even if ROM cannot fit with this change.
 
 #### Bank B and general purpose banks
 Bank B is the general purpose memory bank. Addressable locations from 0 to 247 may be used for anything you want. The last eight addressable spaces are reserved for devices. The lower four addressable locations contain memory bank information which is read only with the upper four containing device information (if supported device is plugged in).
@@ -28,8 +28,8 @@ The first four bits should never be used.
 
 
 ## Registers
-- `A` register is the first regiser which instructions can use. It can be read and data loaded into
-- `B` register is the second regiser which instructions can use. It can be read and data loaded into
+- `A` register is the first register which instructions can use. It can be read and data loaded into
+- `B` register is the second register which instructions can use. It can be read and data loaded into
 - `C` register is the results register. It can be read but not written to
 - `P` register is the program pointer. It is read only and points to the current instruction being executed in memory in `BANK_A` ROM.
 - `M` - is the memory bank register which points to the current memory bank being addressed
@@ -47,7 +47,7 @@ The according order below, shows the binary form of each instruction so `LDA` wo
 - `JNZ` `&memory_address` - Move the program pointer to a new memory address if C register is not zero
 - `JZ` `&memory_address` - Move the program pointer to a new memory address if C register is zero
 - `NOP` - Skip cycle and perform no instruction
-- `SET` `flag` `&memory_address` `constant` - Set an address in memory to the value of the A reister if no flag set, else read the 1 byte after as data (`SET` with an address and flag is transformed `LDACON constant` and then `STA &memory_address` as `SET` does the same to `STA`)
+- `SET` `flag` `&memory_address` `constant` - Set an address in memory to the value of the A register if no flag set, else read the 1 byte after as data (`SET` with an address and flag is transformed `LDACON constant` and then `STA &memory_address` as `SET` does the same to `STA`)
 - `CMP` `flag` - Compares the values in register A and B and stores the result in the C register (if flag is 0 - no flip, if not zero, flip output stored in the C register)
 - `CPL` `flag` - Compares if value in A register is less than B register and stores result in C (if flag is 0 - no flip, if not zero, flip output stored in the C register)
 - `AND` (Bitwise AND): Performs a bitwise AND operation between the values in registers A and B and stores the result in the A register.

@@ -37,7 +37,7 @@ namespace Assembler
             // Output file
             string outputRom = "ROM.bin";
 
-            #region Cleanup
+            #region Clean up
             // Discard any empty lines
             lines = lines.Where(line => !string.IsNullOrEmpty(line)).ToArray();
 
@@ -214,7 +214,6 @@ namespace Assembler
                 }
             }
 
-
             return instructions;
         }
 
@@ -343,7 +342,7 @@ namespace Assembler
         }
 
         /// <summary>
-        /// Finds all labels in the lines provided and retuns a list of Labels and cleaned up lines without label declarations
+        /// Finds all labels in the lines provided and returns a list of Labels and cleaned up lines without label declarations
         /// </summary>
         /// <param name="lines"></param>
         /// <returns></returns>
