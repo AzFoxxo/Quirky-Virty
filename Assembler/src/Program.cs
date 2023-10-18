@@ -147,23 +147,30 @@ namespace Assembler
                         // Remove $ - address from operand
                         var operand = instruction.lngReg.Replace("$", "");
 
-                        // Convert to byte
-                        if (Byte.TryParse(operand, System.Globalization.NumberStyles.HexNumber, null, out byte value))
+                        // Convert to hex to byte
+                        if (Byte.TryParse(operand, System.Globalization.NumberStyles.HexNumber, null, out byte value) && instruction.lngReg.Contains('$'))
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine($"`{instruction.lngReg}` to `{operand}` to `{Convert.ToByte(value)}`");
                             Console.ResetColor();
-
-                            // Write the byte
-                            writer.Write(value);
+                        }
+                        // Convert to decimal to byte
+                        else if (Byte.TryParse(operand, out value))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine($"`{instruction.lngReg}` to `{operand}` to `{Convert.ToByte(value)}`");
+                            Console.ResetColor();
                         }
                         else
                         {
                             // Log error
                             Console.WriteLine($"Error: Invalid long register {instruction.lngReg}");
                             Environment.Exit((int)ErrorCodes.InvalidLongRegister);
-                        
+                            return;
                         }
+
+                        // Write the byte
+                        writer.Write(value);
                     }
                 }
 
