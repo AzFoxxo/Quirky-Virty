@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembler", "Assembler\Asse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VM", "VM\VM.csproj", "{CCB31B09-6D84-4B5E-B30A-3C3EC608E5AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QKVTShared", "QKVTShared\QKVTShared.csproj", "{72DF6DE1-C410-4CD2-B877-E5886BC5C776}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{CCB31B09-6D84-4B5E-B30A-3C3EC608E5AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB31B09-6D84-4B5E-B30A-3C3EC608E5AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB31B09-6D84-4B5E-B30A-3C3EC608E5AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72DF6DE1-C410-4CD2-B877-E5886BC5C776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72DF6DE1-C410-4CD2-B877-E5886BC5C776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72DF6DE1-C410-4CD2-B877-E5886BC5C776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72DF6DE1-C410-4CD2-B877-E5886BC5C776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

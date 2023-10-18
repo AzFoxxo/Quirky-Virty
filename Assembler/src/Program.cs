@@ -21,6 +21,7 @@
 
 using System;
 using System.Diagnostics;
+using QKVTShared;
 
 namespace Assembler
 {

@@ -1,4 +1,4 @@
-/*
+﻿/*
  Copyright (c) 2023 Az Foxxo
 
  Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -19,9 +19,9 @@
  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Assembler
+namespace QKVTShared
 {
-    enum Opcodes
+    public enum Opcodes
     {
         LDA,
         LDB,

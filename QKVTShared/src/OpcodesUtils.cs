@@ -19,9 +19,11 @@
  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+using QKVTShared;
+
 namespace Assembler
 {
-    static class OpcodesUtils
+    public static class OpcodesUtils
     {
         /// <summary>
         /// Convert opcode to binary representation.
