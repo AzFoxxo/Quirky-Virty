@@ -1,6 +1,11 @@
 # Quirky Virty (QKVT) 8 bit simplified architecture
 Quirky Virty is a highly simplified 8 bit virtual machine with a reduced instruction set using a console interface which loads roms.
 
+## Projects breakdown
+- `Assembler` - This is a basic assembler which takes QKVT assembly and generates a ROM file.
+- `QKVTShared` - This contains code both projects depend on to work.
+- `VM` - This project is a basic virtual machine which executes QKVT ROM files.
+
 ## CPU
 The CPU operates at 2MHz (single threaded) and each instruction takes one whole byte, the first bit is the flag which can either be `0` or `1` - one being alternate behaviour, the second bit contains whether an additional eight bits is required for the instruction `1` or if the instruction requires no other space `0`. This leaves 6 bits for the instruction itself.
 
